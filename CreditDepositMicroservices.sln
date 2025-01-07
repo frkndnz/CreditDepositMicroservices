@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerService", "Customer
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DepositService", "DepositService\DepositService.csproj", "{0E0B13F4-F869-4512-BE85-5A8BA77DC9E4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiGateway", "ApiGateway\ApiGateway.csproj", "{86F6396B-4329-48D7-A9AC-B23383DBE09B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{0E0B13F4-F869-4512-BE85-5A8BA77DC9E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0E0B13F4-F869-4512-BE85-5A8BA77DC9E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0E0B13F4-F869-4512-BE85-5A8BA77DC9E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86F6396B-4329-48D7-A9AC-B23383DBE09B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86F6396B-4329-48D7-A9AC-B23383DBE09B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86F6396B-4329-48D7-A9AC-B23383DBE09B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86F6396B-4329-48D7-A9AC-B23383DBE09B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
