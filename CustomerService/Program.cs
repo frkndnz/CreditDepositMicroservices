@@ -21,20 +21,35 @@ builder.Services.AddServices();
 
 var app = builder.Build();
 
-using (var scope=app.Services.CreateScope())
+using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
     var context = services.GetRequiredService<Context>();
 
-    var customer = new Customer()
+    var customers = new Customer[]
     {
+       new Customer()
+       {
         Id = 1,
         FirstName = "John",
         LastName = "Doe",
-        Email = "test@gmail.com"
+        Email = "test@gmail.com",
+        PhoneNumber = "1234567890",
+        Address="bahcelievler mah. 123 sokak no:5"
+
+       },
+       new Customer()
+       {
+           Id = 2,
+              FirstName = "Jane",
+                LastName = "Doe",
+                Email = "test2@gmail.com",
+                PhoneNumber="0987654321",
+                Address="bahcelievler mah. 123 sokak no:5"
+       }
     };
-   await context.Customers.AddAsync(customer);
-   await context.SaveChangesAsync();
+    await context.Customers.AddRangeAsync(customers);
+    await context.SaveChangesAsync();
 }
 
 // Configure the HTTP request pipeline.
