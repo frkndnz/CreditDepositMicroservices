@@ -27,16 +27,16 @@ namespace CustomerService.Services.Concrete
 
             if (!validationResult.IsValid)
             {
-                return new Result(false, string.Join("\n", validationResult.Errors.Select(x => x.ErrorMessage)));
+                return Result.ValidationFailure(validationResult);
             }
             await _customerRepository.AddCustomerAsync(customerEntity);
-            return new Result(true, "Customer added successfully");
+            return Result.Success("Customer added successfully");
         }
 
         public async Task<Result> DeleteCustomerAsync(int id)
         {
             await _customerRepository.DeleteCustomerAsync(id);
-            return new Result(true, "Customer deleted successfully");
+            return Result.Success("Customer deleted successfully");
         }
 
         public async Task<CustomerDTO> GetCustomerAsync(int id)
@@ -60,10 +60,10 @@ namespace CustomerService.Services.Concrete
 
             if (!validationResult.IsValid)
             {
-                return new Result(false, string.Join("\n", validationResult.Errors.Select(x => x.ErrorMessage)));
+                return Result.ValidationFailure(validationResult);
             }
             await _customerRepository.UpdateCustomerAsync(customerEntity);
-            return new Result(true, "Customer updated successfully");
+            return Result.Success("Customer updated successfully");
         }
     }
 }

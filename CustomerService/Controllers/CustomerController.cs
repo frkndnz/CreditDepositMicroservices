@@ -33,10 +33,26 @@ namespace CustomerService.Controllers
         public async Task<IActionResult> AddCustomer(CreateCustomerDTO createCustomerDTO)
         {
             var result = await _customerService.AddCustomerAsync(createCustomerDTO);
-            return result.IsSuccess ? Ok(result.Message) : BadRequest(result.Message);
+            if (!result.IsSuccess)
+            {
+                if (result.Errors?.Any() == true)
+                {
+                    var errorResponse = new
+                    {
+                        Message = "Validation failed",
+                        Errors = result.Errors.Select(e => new
+                        {
+                            Field = e.PropertyName,
+                            Message = e.ErrorMessage
+                        })
+                    };
+                    return BadRequest(errorResponse);
+                }
+                return BadRequest(result.Message);
+            }
+            return Ok(result.Message);
         }
-
-        [HttpPut]
+            [HttpPut]
         public async Task<IActionResult> UpdateCustomer(CreateCustomerDTO createCustomerDTO)
         {
             var result = await _customerService.UpdateCustomerAsync(createCustomerDTO);
